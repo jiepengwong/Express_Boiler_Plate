@@ -17,7 +17,12 @@ const User = sequelize.define('User', {
   },
   password: {
     type: DataTypes.STRING(255),
-    allowNull: false
+    allowNull: false,
+    set(value) { 
+      const salt = bcrypt.genSaltSync(10); 
+      const hash = bcrypt.hashSync(value, salt); 
+      this.setDataValue('password', hash); 
+    }
   },
   email: {
     type: DataTypes.STRING(255),
