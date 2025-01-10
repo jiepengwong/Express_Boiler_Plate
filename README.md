@@ -11,3 +11,7 @@ todos
 - integrate docker mysql with express
 - authentication jwt setup
 - Pagination setup
+
+
+common docker commands list
+- 
