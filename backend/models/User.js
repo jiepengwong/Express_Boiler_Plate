@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/db.js';
+import { sequelize } from '../config/db.js'; 
 
-const User = sequelize.define('User', {
+const User = sequelize.define('USER', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -31,7 +31,7 @@ const User = sequelize.define('User', {
   created_at: {
     type: DataTypes.DATE,        // Or DataTypes.TIMESTAMP
     defaultValue: DataTypes.NOW  // Use Sequelize's NOW function
-  }
+  },
 });
 
 export default User;
