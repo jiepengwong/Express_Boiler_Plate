@@ -1,7 +1,7 @@
 commands
 - npm start
 - docker build -t database-image .
-- docker run -d -p 3306:3306 --name your-sql-container database-image
+- docker run -d -p 3306:3306 --name express-sql database-image
 
 
 todos
@@ -15,3 +15,7 @@ todos
 
 common docker commands list
 - 
+
+
+TOKEN secret string on node
+require('crypto').randomBytes(64).toString('hex')

@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../config/db.js'; 
+import bcrypt from 'bcrypt';
 
 const User = sequelize.define('USER', {
   id: {
@@ -32,6 +33,10 @@ const User = sequelize.define('USER', {
     type: DataTypes.DATE,        // Or DataTypes.TIMESTAMP
     defaultValue: DataTypes.NOW  // Use Sequelize's NOW function
   },
+  refresh_token: {
+    type: DataTypes.STRING(255),
+    allowNull: true
+  }
 });
 
 export default User;

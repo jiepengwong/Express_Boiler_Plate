@@ -1,10 +1,15 @@
 import express from 'express';
 import userRoutes from './routes/userRoutes.js';
 import {connectToDatabase} from './config/db.js';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv';
+import cors from 'cors';
+dotenv.config();dotenv.config();
 
 const app = express();
+
+
+// Enable CORS for all origins
+app.use(cors());
 
 app.use(express.json());
 
