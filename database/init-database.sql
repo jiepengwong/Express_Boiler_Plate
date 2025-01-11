@@ -4,7 +4,8 @@ CREATE TABLE USER (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    refresh_token VARCHAR(255)
 );
 
 INSERT INTO USER (name, username, password, email) VALUES ('John Doe', 'john_doe', 'password', 'test@gmail.com');

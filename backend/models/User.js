@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
-import sequelize from '../config/db.js';
+import { sequelize } from '../config/db.js'; 
+import bcrypt from 'bcrypt';
 
-const User = sequelize.define('User', {
+const User = sequelize.define('USER', {
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -17,7 +18,12 @@ const User = sequelize.define('User', {
   },
   password: {
     type: DataTypes.STRING(255),
-    allowNull: false
+    allowNull: false,
+    set(value) { 
+      const salt = bcrypt.genSaltSync(10); 
+      const hash = bcrypt.hashSync(value, salt); 
+      this.setDataValue('password', hash); 
+    }
   },
   email: {
     type: DataTypes.STRING(255),
@@ -26,6 +32,10 @@ const User = sequelize.define('User', {
   created_at: {
     type: DataTypes.DATE,        // Or DataTypes.TIMESTAMP
     defaultValue: DataTypes.NOW  // Use Sequelize's NOW function
+  },
+  refresh_token: {
+    type: DataTypes.STRING(255),
+    allowNull: true
   }
 });
 
